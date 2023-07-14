@@ -1,0 +1,15 @@
+diff --git a/node_modules/passport-oauth2/lib/strategy.js b/node_modules/passport-oauth2/lib/strategy.js
+index 8575b72..5376132 100644
+--- a/node_modules/passport-oauth2/lib/strategy.js
++++ b/node_modules/passport-oauth2/lib/strategy.js
+@@ -96,6 +96,10 @@ function OAuth2Strategy(options, verify) {
+   this._oauth2 = new OAuth2(options.clientID,  options.clientSecret,
+                             '', options.authorizationURL, options.tokenURL, options.customHeaders);
+ 
++  if (options.agent) {
++    this._oauth2.setAgent(options.agent);
++  }
++
+   this._callbackURL = options.callbackURL;
+   this._scope = options.scope;
+   this._scopeSeparator = options.scopeSeparator || ' ';
